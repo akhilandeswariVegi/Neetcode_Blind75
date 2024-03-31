@@ -6,3 +6,23 @@ Input: s = "ABAB", k = 2
 Output: 4
 Explanation: Replace the two 'A's with two 'B's or vice versa.
 */
+
+function characterReplacement(s, k) {
+    let charFrequencyMap = new Map();
+    let [left, right, result] = new Array(3).fill(0);
+
+    while (right < s.length) {
+        let lengthOfWindow = right - left + 1
+        charFrequencyMap.set(s[right], 1 + (charFrequencyMap.get(s[right]) || 0))
+
+        if ((lengthOfWindow - Math.max(...charFrequencyMap.values())) > k) {
+            charFrequencyMap.set(s[left], charFrequencyMap.get(s[left]) - 1)
+            left++;
+        }
+
+        lengthOfWindow = right - left + 1;
+        result = Math.max(result, lengthOfWindow)
+        right++;
+    }
+    return result;
+};
