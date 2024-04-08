@@ -6,7 +6,7 @@ Input: nums = [100,4,200,1,3,2]
 Output: 4
 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
 */
-
+hh
 function longestConsecutive (nums, maxScore = 0) {
     const numSet = new Set(nums); // Stores unique numbers Time O(N) | Space O(N)
 
