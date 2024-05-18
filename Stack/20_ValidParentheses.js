@@ -15,25 +15,22 @@ Output: true
  * @return {boolean} - Returns true if the input string is valid, otherwise false.
  */
 var isValid = (s, stack = []) => {
-    // Map to store closing brackets as keys and their corresponding opening brackets as values
     const map = {
         '}': '{',
         ']': '[',
         ')': '(',
     };
 
-    // Iterate through each character in the string
     for (const char of s) {
-        // Check if the current character is an opening bracket
-        const isOpenBracket = (char in map);
-        if (!isOpenBracket) {
-            // If it's not an opening bracket, push it onto the stack
+        const isCloseBracket = (char in map);
+        if (!isCloseBracket) {
             stack.push(char);
             continue;
         }
 
         // Check if the top of the stack contains the corresponding opening bracket
         const isEqual = (stack[stack.length - 1] === map[char]);
+
         if (isEqual) {
             // If the current character matches the top of the stack, pop it from the stack
             stack.pop();
@@ -44,6 +41,5 @@ var isValid = (s, stack = []) => {
         return false;
     }
 
-    // After iterating through all characters, if the stack is empty, the string is valid
     return (stack.length === 0);
 };
