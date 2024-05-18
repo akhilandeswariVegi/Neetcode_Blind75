@@ -17,13 +17,13 @@ var mergeTwoLists = function (list1, list2) {
     // Traverse both lists until one is exhausted
     while (list1 !== null && list2 !== null) {
         if (list1.val < list2.val) {
-            current.next = list1;
-            list1 = list1.next;
+            current.next = list1; // Link the smaller node to the merged list
+            list1 = list1.next;   // Move to the next node in list1
         } else {
-            current.next = list2;
-            list2 = list2.next;
+            current.next = list2; // Link the smaller node to the merged list
+            list2 = list2.next;   // Move to the next node in list2
         }
-        current = current.next;
+        current = current.next;   // Move to the next position in the merged list
     }
 
     // If there are remaining nodes in either list, append them
