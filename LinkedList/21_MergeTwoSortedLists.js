@@ -1,29 +1,39 @@
-/*
-You are given the heads of two sorted linked lists list1 and list2.
-Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
-Return the head of the merged linked list.
-*/
-var mergeTwoLists = function(list1, list2) {
-    let sentinel = tail = new ListNode();
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function (list1, list2) {
+    let dummy = new ListNode();
+    let current = dummy;
 
-    while (list1 && list2) {/* Time O(N + M) */
-        const isL2Greater = list1.val <= list2.val;
-        const isL2Less = list2.val < list1.val;
-
-        if (isL2Greater) {
-            tail.next = list1;
+    // Traverse both lists until one is exhausted
+    while (list1 !== null && list2 !== null) {
+        if (list1.val < list2.val) {
+            current.next = list1;
             list1 = list1.next;
-        }
-
-        if (isL2Less) {
-            tail.next = list2;
+        } else {
+            current.next = list2;
             list2 = list2.next;
         }
-
-        tail = tail.next;
+        current = current.next;
     }
 
-    tail.next = list1 || list2;
+    // If there are remaining nodes in either list, append them
+    if (list1 !== null) {
+        current.next = list1;
+    }
+    if (list2 !== null) {
+        current.next = list2;
+    }
 
-    return sentinel.next;
+    // Return the merged list, starting from the next node of dummy (skipping the dummy head)
+    return dummy.next;
 };
