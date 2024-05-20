@@ -12,6 +12,7 @@ Notice that you may not slant the container.
  * @param {number[]} height
  * @return {number}
  */
+
 var maxArea = function (height) {
     let [left, right, maxArea] = [0, height.length - 1, 0];
 
