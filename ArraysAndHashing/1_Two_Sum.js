@@ -21,3 +21,4 @@ var twoSum = function (nums, target) {
     
     throw new Error("No two sum solution");
 };
+
