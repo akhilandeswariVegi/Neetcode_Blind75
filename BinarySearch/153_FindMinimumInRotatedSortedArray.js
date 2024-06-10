@@ -28,3 +28,12 @@ var findMin = function(nums) {
 
     return nums[left];
 };
+
+/*
+Time Complexity: 
+O(logn)
+The function performs a binary search, which reduces the search space by half in each iteration, leading to a logarithmic time complexity.
+Space Complexity: 
+O(1)
+The function uses a constant amount of extra space, as it only requires a fixed number of variables and does not allocate additional memory that depends on the size of the input array.
+*/
