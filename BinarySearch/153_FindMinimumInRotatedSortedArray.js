@@ -11,11 +11,13 @@ Output: 1
 Explanation: The original array was [1,2,3,4,5] rotated 3 times.
 */
 var findMin = function(nums) {
-    let left = 0;
-    let right = nums.length - 1;
+    let left = 0; // start index
+    let right = nums.length - 1; // end index
 
     while (left < right) {
-        let mid = left + Math.floor((right - left) / 2);
+        let mid = Math.floor((left+right) / 2);
+
+        // If nums[mid] > nums[right], means the minimum element is in the right half of the array (excluding mid itself), so left is updated to mid + 1. Otherwise, the minimum element is in the left half of the array (including mid), so right is updated to mid.
 
         if (nums[mid] > nums[right]) {
             left = mid + 1;
